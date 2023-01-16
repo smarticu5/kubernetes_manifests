@@ -10,7 +10,7 @@ spec:
   nodeSelector:
     node-role.kubernetes.io/control-plane: ''
   containers:
-  - name: noderootpod
+  - name: pki-reader
     image: alpine
     volumeMounts:
     - mountPath: /host
@@ -20,4 +20,4 @@ spec:
   volumes:
   - name: noderoot
     hostPath:
-      path: /
+      path: /etc/kubernetes/pki
