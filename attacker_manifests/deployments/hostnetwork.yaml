@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hostnetworkdeployment
+  name: hostnetworkdeployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hostnetworkdeployment
+  strategy: {}
+  template:
+    spec:
+      hostNetwork: true
+      containers:
+      - name: hostnetwork
+        image: alpine
+        command: [ "/bin/sh", "-c", "--" ]
+        args: [ "while true; do sleep 30; done;" ]

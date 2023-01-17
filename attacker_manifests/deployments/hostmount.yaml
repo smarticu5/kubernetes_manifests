@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hostmountdeployment
+  name: hostmountdeployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hostmountdeployment
+  strategy: {}
+  template:
+    spec:
+      containers:
+      - name: hostmountpod
+        image: alpine
+        volumeMounts:
+        - mountPath: /host
+          name: noderoot
+        command: [ "/bin/sh", "-c", "--" ]
+        args: [ "while true; do sleep 30; done;" ]
+      volumes:
+      - name: noderoot
+        hostPath:
+          path: /

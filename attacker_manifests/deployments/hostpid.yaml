@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hostpiddeployment
+  name: hostpiddeployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hostpiddeployment
+  strategy: {}
+  template:
+    metadata:
+      name: hostpiddeployment
+      labels:
+    spec:
+      hostPID: true
+      containers:
+      - name: hostpid
+        image: alpine
+        command: [ "/bin/sh", "-c", "--" ]
+        args: [ "while true; do sleep 30; done;" ]
