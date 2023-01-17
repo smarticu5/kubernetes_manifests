@@ -1,16 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pki-reader
+  name: hostmount
   labels:
 spec:
-  tolerations:
-  - key: node-role.kubernetes.io/master
-    effect: NoSchedule
-  nodeSelector:
-    node-role.kubernetes.io/control-plane: ''
   containers:
-  - name: pki-reader
+  - name: hostmountpod
     image: alpine
     volumeMounts:
     - mountPath: /host
@@ -20,4 +15,4 @@ spec:
   volumes:
   - name: noderoot
     hostPath:
-      path: /etc/kubernetes/pki
+      path: /

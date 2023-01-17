@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: noderootpod
+  name: hostnetworkpod
   labels:
 spec:
-  hostPID: true
+  hostNetwork: true
   containers:
-  - name: noderootpod
+  - name: hostnetwork
     image: alpine
     command: [ "/bin/sh", "-c", "--" ]
     args: [ "while true; do sleep 30; done;" ]

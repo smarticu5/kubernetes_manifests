@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pki-reader
+  labels:
+spec:
+  tolerations:
+  - key: node-role.kubernetes.io/master
+    effect: NoSchedule
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ''
+  containers:
+  - name: pki-reader
+    image: alpine
+    volumeMounts:
+    - mountPath: /host
+      name: pki-directory
+    command: [ "/bin/sh", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+  volumes:
+  - name: pki-directory
+    hostPath:
+      path: /etc/kubernetes/pki
