@@ -10,7 +10,7 @@ spec:
   - image: alpine
     name: normalpod
     resources: {}
-    command: [ "/bin/bash", "-c", "--" ]
+    command: [ "/bin/sh", "-c", "--" ]
     args: [ "while true; do sleep 30; done;" ]
   dnsPolicy: ClusterFirst
   restartPolicy: Always
