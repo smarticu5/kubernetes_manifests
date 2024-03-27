@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: test-allow-sa-patch
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: test-allow-get-patch-namespace
+subjects:
+- kind: ServiceAccount
+  name: labeller
+  namespace: default
