@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: alpine-restricted
+  name: alpine-restricted
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alpine-restricted
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: alpine-restricted
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: "RuntimeDefault"      
+	  containers:
+      - image: alpine
+        name: alpine
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+status: {}
