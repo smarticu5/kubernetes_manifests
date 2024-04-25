@@ -1,5 +1,6 @@
 kubectl apply -f sa.yaml
 kubectl apply -f pod.yaml
+kubectl wait --for=condition=ready pod labeller
 kubectl exec labeller -- kubectl label ns default test=test
 
 echo "Note that didn't work"
