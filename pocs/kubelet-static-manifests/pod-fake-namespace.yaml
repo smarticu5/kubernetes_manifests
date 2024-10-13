@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: fake-ns-pod
+  name: fake-ns-pod
+  namespace: fake-ns
+spec:
+  containers:
+  - image: nginx
+    name: fake-ns-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

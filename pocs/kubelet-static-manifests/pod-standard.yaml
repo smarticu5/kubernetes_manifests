@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: standard-pod
+  name: standard-pod
+  namespace: baseline
+spec:
+  containers:
+  - image: nginx
+    name: standard-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
